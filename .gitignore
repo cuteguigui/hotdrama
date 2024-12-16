@@ -1,0 +1,41 @@
+# 忽略 Python 虚拟环境
+myenv310_clean/
+myenv310/
+new_kissing_env/
+spleeter_env/
+myenv/
+venv/
+
+# 忽略编译文件
+__pycache__/
+*.pyc
+
+# 忽略敏感文件
+cookies.pkl
+
+# 忽略可执行文件
+*.exe
+
+# 忽略视频文件
+*.mp4
+
+# 忽略数据文件
+*.csv
+*.txt
+
+# 忽略预训练模型
+pretrained_models/
+pytorchvideo/
+
+
+# 忽略 Docker 文件
+Docker Desktop Installer.exe
+
+# 忽略其他不需要的文件夹
+AutoPrompt/
+argilla_data/
+*.dat
+shape_predictor_68_face_landmarks.dat
+
+# 忽略根目录下的所有 .py 文件
+/*.py
