@@ -227,3 +227,44 @@
 		    return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
 		}
 	}
+// main.js
+
+// 函数：记录页面视图
+function trackPageView() {
+	if (typeof gtag === 'function') {
+	  gtag('event', 'page_view', {
+		page_path: window.location.pathname + window.location.search
+	  });
+	}
+  }
+  
+  // 在页面加载时记录初始页面视图
+  window.addEventListener('load', () => {
+	trackPageView();
+  });
+  
+  // 监听URL变化（使用History API）
+  (function() {
+	const originalPushState = history.pushState;
+	const originalReplaceState = history.replaceState;
+  
+	history.pushState = function(...args) {
+	  originalPushState.apply(history, args);
+	  window.dispatchEvent(new Event('locationchange'));
+	};
+  
+	history.replaceState = function(...args) {
+	  originalReplaceState.apply(history, args);
+	  window.dispatchEvent(new Event('locationchange'));
+	};
+  
+	window.addEventListener('popstate', () => {
+	  window.dispatchEvent(new Event('locationchange'));
+	});
+  })();
+  
+  // 在URL变化时记录页面视图
+  window.addEventListener('locationchange', () => {
+	trackPageView();
+  });
+  
